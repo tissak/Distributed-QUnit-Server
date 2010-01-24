@@ -15,6 +15,18 @@ What this proof of concept is about?
 * Think outside the box. Simple web technologies do your bidding.
 * Inspiring people to hack their little web ideas together.
 
+Requirements
+------------
+
+Gems
+* Sinatra - for the server
+* Json - for easy communication with JS
+
+JS
+* JQuery
+
+Note. QUnit doesn't normally need jQuery but my post back uses it for simple server comms.
+
 Usage
 -----
 
