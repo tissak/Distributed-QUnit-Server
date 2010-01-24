@@ -19,10 +19,12 @@ Requirements
 ------------
 
 Gems
+
 * Sinatra - for the server
 * Json - for easy communication with JS
 
 JS
+
 * JQuery
 
 Note. QUnit doesn't normally need jQuery but my post back uses it for simple server comms.
