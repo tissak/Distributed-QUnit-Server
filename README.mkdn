@@ -1,0 +1,61 @@
+QUnit Server Test
+=========
+
+How simply can we run QUnit in multiple browsers, reporting back to a single location? With Sinatra very simply.
+
+This is purely a hacked 'what-if' produced in the few spare moments I have on public transport. For a more real world solution please have a look at the likes of JSpec that I discovered after this little hack around. 
+
+JSpec: http://github.com/visionmedia/jspec
+
+What this proof of concept is about?
+------------------------------------
+
+* We push for testing in ruby. We should try and strengthen this mentality in Javascript also.
+* Sinatra is the swiss army knife of web prototyping tools.
+* Think outside the box. Simple web technologies do your bidding.
+* Inspiring people to hack their little web ideas together.
+
+Usage
+-----
+
+Steps are:
+* start the server
+* open browser(s) to test page and put them out of the way
+* make some JS changes
+* trigger the server to see results from all the browsers.
+
+At a command prompt run "ruby main.rb" to start the server. Then point your browser at
+
+http://localhost:4567/test/index.html
+
+Console should read out the success, total and browser type of the browser you just opened. You can now open multiple browsers to the same location. 
+
+Finally either with the command line helper run "spec.rb" or go to http://localhost:4567/trigger
+
+You should see your console read out a refresh of all of the browsers. It may take a moment for all browsers to update.
+
+What's Going On?
+----------------
+
+The concept is super simple.
+
+QUnit has hooks that run during key points of the testing including when it is finished. The done hook has been modified to POST the results back to the server. This means opening a browser, sends back it's stats. 
+
+The server holds a version number and this number means nothing other than when our test page loads it asks the server what version it's at. Once a page is loaded it then polls the server every few seconds for the servers version number. If that number ever changes the page will reload and resubmit it's results.
+
+All we need do is hit the trigger URL path, server increments the version, every browser holding our test page finds the new version and reloads. 
+
+Why didn't you...?
+------------------
+
+Just to ward off that kind of questioning, yes I could have used long polling, web sockets, Commet and other technologies, but this was a simple proof of concept. Keeping it simple and seeing if simple works is a better place to start.
+
+Contributors
+------------
+
+* [Tony Issakov](http://github.com/tissak)
+
+Legal
+-----
+
+Copyright (c) 2003-2009 [The Frontier Group, Pty. Ltd.](http://thefrontiergroup.com.au) All rights reserved.
