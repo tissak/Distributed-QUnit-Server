@@ -18,11 +18,14 @@ What this proof of concept is about?
 Usage
 -----
 
-Steps are:
+Overview
+
 * start the server
 * open browser(s) to test page and put them out of the way
 * make some JS changes
 * trigger the server to see results from all the browsers.
+
+Steps
 
 At a command prompt run "ruby main.rb" to start the server. Then point your browser at
 
